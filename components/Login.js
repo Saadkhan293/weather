@@ -39,7 +39,7 @@ export default function Employeelogin({ navigation }) {
         .then((response) => {
           if (response === "Data Matched") {
             Alert.alert("Login Successful");
-            navigation.navigate("Search City");
+          navigation.navigate("Search",{param1:username});
           } else {
             Alert.alert("please try again");
           }

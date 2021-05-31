@@ -18,12 +18,12 @@ export default function EmployeeSignup({ navigation }) {
   const [username, setUserName] = useState("");
   const [password, setpassword] = useState("");
   const [conPassword, setConpassword] = useState("");
-
+  const [location,setlocation]=useState("");
   const sendData = () => {
     if (
-      username.length == 0 ||
-      password.length == 0 ||
-      conPassword.length == 0
+      username.length === 0 ||
+      password.length === 0 ||
+      conPassword.length === 0 || location.length===0
     ) {
       Alert.alert("please fill the required field");
     } else if (password !== conPassword) {
@@ -33,6 +33,7 @@ export default function EmployeeSignup({ navigation }) {
       var data = {
         username: username,
         password: password,
+        location:location,
       };
       var headers = {
         Accept: "application/json,text/plain, */*",
@@ -83,6 +84,13 @@ export default function EmployeeSignup({ navigation }) {
         placeholderTextColor="#CCCCCC"
         secureTextEntry={true}
         onChangeText={(text) => setConpassword(text)}
+      ></TextInput>
+      <TextInput
+        style={styles.textInput}
+        placeholder="Enter your location"
+        placeholderTextColor="#CCCCCC"
+        secureTextEntry={true}
+        onChangeText={(text) => setlocation(text)}
       ></TextInput>
 
       <TouchableOpacity style={styles.signupbutton} onPress={sendData}>

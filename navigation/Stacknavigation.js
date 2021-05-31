@@ -27,7 +27,7 @@ export default function Stacknavigation() {
     >
       <Stack.Screen name="Sign in" component={Login} />
       <Stack.Screen name="Sign up" component={Signup} />
-      <Stack.Screen name="Search City" component={Search} />
+      <Stack.Screen name="Search" component={Search} />
       <Stack.Screen name="Weather" component={Weather} />
     </Stack.Navigator>
   );
