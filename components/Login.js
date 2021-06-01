@@ -7,11 +7,10 @@ import {
   TouchableOpacity,
   TextInput,
   navigation,
+  ImageBackground,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { useState } from "react";
-import EmployeeSignup from "./Signup";
-
 export default function Employeelogin({ navigation }) {
   const [username, setUserName] = useState("");
   const [password, setpassword] = useState("");
@@ -39,7 +38,7 @@ export default function Employeelogin({ navigation }) {
         .then((response) => {
           if (response === "Data Matched") {
             Alert.alert("Login Successful");
-          navigation.navigate("Search",{param1:username});
+            navigation.navigate("Search", { param1: username });
           } else {
             Alert.alert("please try again");
           }
@@ -52,44 +51,53 @@ export default function Employeelogin({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text
-        style={{
-          fontSize: 30,
-          padding: "2%",
-          color: "white",
-          fontWeight: "bold",
+      <ImageBackground
+        style={styles.image}
+        source={{
+          uri: "https://images.unsplash.com/photo-1506500072623-b8c2a36a047e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80",
         }}
       >
-        login
-      </Text>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Username"
-        placeholderTextColor="#CCCCCC"
-        onChangeText={(text) => setUserName(text)}
-      ></TextInput>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Password"
-        placeholderTextColor="#CCCCCC"
-        secureTextEntry={true}
-        onChangeText={(text) => setpassword(text)}
-      ></TextInput>
-      <TouchableOpacity style={styles.loginbutton} onPress={sendData}>
-        <Icon style={{ textAlign: "center" }} name="key">
-          <Text style={{ textAlign: "center" }}> Login</Text>
-        </Icon>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.signupbutton}
-        onPress={() => navigation.navigate("Sign up")}
-      >
-        <Icon style={{ textAlign: "center" }} name="user">
-          <Text style={{ textAlign: "center", fontWeight: "bold" }}>
-            SignUp
+        <View style={styles.con}>
+          <Text
+            style={{
+              fontSize: 30,
+              padding: "2%",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            Login
           </Text>
-        </Icon>
-      </TouchableOpacity>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Username"
+            placeholderTextColor="#CCCCCC"
+            onChangeText={(text) => setUserName(text)}
+          ></TextInput>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Password"
+            placeholderTextColor="#CCCCCC"
+            secureTextEntry={true}
+            onChangeText={(text) => setpassword(text)}
+          ></TextInput>
+          <TouchableOpacity style={styles.loginbutton} onPress={sendData}>
+            <Icon style={{ textAlign: "center" }} name="key">
+              <Text style={{ textAlign: "center" }}> Login</Text>
+            </Icon>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.signupbutton}
+            onPress={() => navigation.navigate("Sign up")}
+          >
+            <Icon style={{ textAlign: "center" }} name="user">
+              <Text style={{ textAlign: "center", fontWeight: "bold" }}>
+                SignUp
+              </Text>
+            </Icon>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -97,17 +105,26 @@ export default function Employeelogin({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1B8057",
+    flexDirection: "column",
+  },
+  con: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
     justifyContent: "center",
   },
   textInput: {
-    height: "5%",
+    height: "6%",
     width: "60%",
     borderBottomWidth: 1,
     borderColor: "white",
     margin: "3%",
     color: "#CCCCCC",
+    fontWeight:"bold"
   },
   loginbutton: {
     width: "60%",

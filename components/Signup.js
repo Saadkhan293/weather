@@ -7,12 +7,11 @@ import {
   Button,
   TouchableOpacity,
   TextInput,
-  navigation,
+  navigation,ImageBackground
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
-import axios from "axios";
 import { Alert } from "react-native";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 export default function EmployeeSignup({ navigation }) {
   const [username, setUserName] = useState("");
@@ -55,52 +54,59 @@ export default function EmployeeSignup({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text
-        style={{
-          fontSize: 30,
-          padding: "2%",
-          color: "white",
-          fontWeight: "bold",
+      <ImageBackground style={styles.image}
+        source={{
+          uri: "https://images.unsplash.com/photo-1492496913980-501348b61469?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
         }}
       >
-        Sign up
-      </Text>
-      <TextInput
-        style={styles.textInput}
-        placeholder="UserName"
-        placeholderTextColor="#CCCCCC"
-        onChangeText={(text) => setUserName(text)}
-      ></TextInput>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Password"
-        placeholderTextColor="#CCCCCC"
-        secureTextEntry={true}
-        onChangeText={(text) => setpassword(text)}
-      ></TextInput>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Confirm Password"
-        placeholderTextColor="#CCCCCC"
-        secureTextEntry={true}
-        onChangeText={(text) => setConpassword(text)}
-      ></TextInput>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Enter your location"
-        placeholderTextColor="#CCCCCC"
-        secureTextEntry={true}
-        onChangeText={(text) => setlocation(text)}
-      ></TextInput>
-
-      <TouchableOpacity style={styles.signupbutton} onPress={sendData}>
-        <Icon style={{ textAlign: "center" }} name="user">
-          <Text style={{ textAlign: "center", fontWeight: "bold" }}>
-            {" "}
-            Register
+        <View style={styles.con}>
+          <Text
+            style={{
+              fontSize: 30,
+              padding: "2%",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            Sign up
           </Text>
-        </Icon>
-      </TouchableOpacity>
+          <TextInput
+            style={styles.textInput}
+            placeholder="UserName"
+            placeholderTextColor="#CCCCCC"
+            onChangeText={(text) => setUserName(text)}
+          ></TextInput>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Password"
+            placeholderTextColor="#CCCCCC"
+            secureTextEntry={true}
+            onChangeText={(text) => setpassword(text)}
+          ></TextInput>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Confirm Password"
+            placeholderTextColor="#CCCCCC"
+            secureTextEntry={true}
+            onChangeText={(text) => setConpassword(text)}
+          ></TextInput>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Enter your location"
+            placeholderTextColor="#CCCCCC"
+            onChangeText={(text) => setlocation(text)}
+          ></TextInput>
+
+          <TouchableOpacity style={styles.signupbutton} onPress={sendData}>
+            <Icon style={{ textAlign: "center" }} name="user">
+              <Text style={{ textAlign: "center", fontWeight: "bold" }}>
+                {" "}
+                Register
+              </Text>
+            </Icon>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -108,9 +114,7 @@ export default function EmployeeSignup({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1B8057",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection:"column"
   },
   textInput: {
     height: "5%",
@@ -139,5 +143,15 @@ const styles = StyleSheet.create({
     borderColor: "#FCA503",
     textAlign: "center",
     margin: "3%",
+  },
+  con: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
   },
 });
