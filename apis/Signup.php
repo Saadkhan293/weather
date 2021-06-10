@@ -15,10 +15,11 @@ $username = $decodedata['username'];
 // Populate Password from JSON $obj array and store into $password.
 $password = $decodedata['password'];
 $hashpassword=password_hash($password,PASSWORD_DEFAULT);
+$location=$decodedata['location'];
 
 
  // Creating SQL query and insert the record into MySQL database table.
-$Sql_Query = "INSERT INTO users (username,password) VALUES ('$username','$hashpassword')";
+$Sql_Query = "INSERT INTO users (username,password,location) VALUES ('$username','$hashpassword','$location')";
  
  
  if(mysqli_query($link,$Sql_Query)){

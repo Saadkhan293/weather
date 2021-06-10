@@ -17,7 +17,7 @@ export default function Click({ navigation, route }) {
   const [username, setusername] = useState(route.params.param1);
 
   const funclocation = () => {
-    var apiLink = "http://192.168.1.105:80/apis/getLocation.php";
+    var apiLink = "http://192.168.10.16:80/apis/getLocation.php";
     var data = {
       username: username,
     };
