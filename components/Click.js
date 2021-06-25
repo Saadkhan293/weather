@@ -17,7 +17,7 @@ export default function Click({ navigation, route }) {
   const [username, setusername] = useState(route.params.param1);
 
   const funclocation = () => {
-    var apiLink = "http://192.168.10.16:80/apis/getLocation.php";
+    var apiLink = "http://192.168.1.107:80/apis/getLocation.php";
     var data = {
       username: username,
     };
@@ -56,6 +56,18 @@ export default function Click({ navigation, route }) {
           <Text style={styles.TextDecor}>
             Click on your city {JSON.stringify(location).slice(1, -1)} to check
             its Weather
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.card}
+        onPress={() => {
+          navigation.navigate("Reminder");
+        }}
+      >
+        <View>
+          <Text style={styles.TextDecor}>
+            Set Reminder
           </Text>
         </View>
       </TouchableOpacity>

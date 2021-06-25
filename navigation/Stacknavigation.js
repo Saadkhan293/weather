@@ -6,6 +6,7 @@ import Signup from "../components/Signup";
 import Click from "../components/Click";
 import { createStackNavigator } from "@react-navigation/stack";
 import Weather from "../components/Weather";
+import Reminder from "../components/Reminder"
 const Stack = createStackNavigator();
 
 export default function Stacknavigation() {
@@ -29,6 +30,7 @@ export default function Stacknavigation() {
       <Stack.Screen name="Sign up" component={Signup} />
       <Stack.Screen name="Search" component={Click} />
       <Stack.Screen name="Weather" component={Weather} />
+      <Stack.Screen name="Reminder" component={Reminder} />
     </Stack.Navigator>
   );
 }

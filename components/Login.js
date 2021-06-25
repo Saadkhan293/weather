@@ -19,7 +19,7 @@ export default function Employeelogin({ navigation }) {
     if (username.length == 0 || password.length == 0) {
       Alert.alert("please fill the required field");
     } else {
-      var apiLink = "http://192.168.10.16:80/apis/Login.php";
+      var apiLink = "http://192.168.1.107:80/apis/Login.php";
       var data = {
         username: username,
         password: password,

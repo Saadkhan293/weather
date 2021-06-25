@@ -28,7 +28,7 @@ export default function EmployeeSignup({ navigation }) {
     } else if (password !== conPassword) {
       Alert.alert("password does not match. Please try again!");
     } else {
-      var apiLink = "http://192.168.10.16:80/apis/Signup.php";
+      var apiLink = "http://192.168.1.107:80/apis/Signup.php";
       var data = {
         username: username,
         password: password,
