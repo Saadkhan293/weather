@@ -13,7 +13,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { Alert } from "react-native";
 import { useState} from "react";
 
-export default function EmployeeSignup({ navigation }) {
+export default function Signup({ navigation }) {
   const [username, setUserName] = useState("");
   const [password, setpassword] = useState("");
   const [conPassword, setConpassword] = useState("");

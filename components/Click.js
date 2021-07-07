@@ -11,8 +11,51 @@ import {
   SafeAreaView,
   navigation,
 } from "react-native";
+import { Alert } from "react-native";
+import * as Notification from "expo-notifications";
+import * as Permission from "expo-permissions";
+
+Notification.setNotificationHandler({
+  handleNotification: async () => {
+    return {
+      shouldPlaySound: true,
+      shouldShowAlert: true,
+    };
+  },
+});
 
 export default function Click({ navigation, route }) {
+
+  const ws = new Date();
+  ws.setMonth(9);
+  ws.setDate(1);
+  ws.setFullYear(2021);
+
+  const wh = new Date();
+  ws.setMonth(2);
+  ws.setDate(1);
+  ws.setFullYear(2022);
+
+  const cs = new Date();
+  ws.setMonth(1);
+  ws.setDate(1);
+  ws.setFullYear(2022);
+
+  const ch = new Date();
+  ws.setMonth(8);
+  ws.setDate(1);
+  ws.setFullYear(2022);
+
+  const as = new Date();
+  ws.setMonth(11);
+  ws.setDate(1);
+  ws.setFullYear(2021);
+
+  const ah = new Date();
+  ws.setMonth(7);
+  ws.setDate(1);
+  ws.setFullYear(2022);
+
   const [location, setLocation] = useState("");
   const [username, setusername] = useState(route.params.param1);
 
@@ -41,8 +84,105 @@ export default function Click({ navigation, route }) {
       });
   };
   useEffect(() => {
+    Permission.getAsync(Permission.NOTIFICATIONS)
+      .then((response) => {
+        if (response.status !== "granted") {
+          return Permission.askAsync(Permission.NOTIFICATIONS);
+        }
+        return response;
+      })
+      .then((response) => {
+        if (response.status !== "granted") {
+          return;
+        }
+      });
     funclocation();
-  });
+    wheatshandleNotification();
+    wheathhandleNotification();
+    cornshandleNotification();
+    cornhhandleNotification();
+    AppleshandleNotification();
+    ApplehhandleNotification();
+  }, []);
+  const trigger = new Date(ws);
+  trigger.setHours(0);
+  trigger.setMinutes(0);
+  trigger.setSeconds(0);
+  const wheatshandleNotification = () => {
+    Notification.scheduleNotificationAsync({
+      content: {
+        title: "Weather",
+        body: "Its time for you to sow the wheat crop",
+      },
+
+      trigger,
+    });
+  };
+  const trigger1 = new Date(wh);
+  trigger1.setHours(0);
+  trigger1.setMinutes(0);
+  trigger1.setSeconds(0);
+  const wheathhandleNotification = () => {
+    Notification.scheduleNotificationAsync({
+      content: {
+        title: "Weather",
+        body: "its time for you to harvest the wheat crop",
+      },
+      trigger1,
+    });
+  };
+  const trigger2 = new Date(cs);
+  trigger2.setHours(0);
+  trigger2.setMinutes(0);
+  trigger2.setSeconds(0);
+  const cornshandleNotification = () => {
+    Notification.scheduleNotificationAsync({
+      content: {
+        title: "Weather",
+        body: "Its time for you to sow the corn crop",
+      },
+      trigger2,
+    });
+  };
+  const trigger3 = new Date(ch);
+  trigger3.setHours(0);
+  trigger3.setMinutes(0);
+  trigger3.setSeconds(0);
+  const cornhhandleNotification = () => {
+    Notification.scheduleNotificationAsync({
+      content: {
+        title: "Weather",
+        body: "its time for you to harvest the corn crop",
+      },
+      trigger3,
+    });
+  };
+  const trigger4 = new Date(as);
+  trigger4.setHours(0);
+  trigger4.setMinutes(0);
+  trigger4.setSeconds(0);
+  const AppleshandleNotification = () => {
+    Notification.scheduleNotificationAsync({
+      content: {
+        title: "Weather",
+        body: "its time for you to sow the apple trees",
+      },
+      trigger4,
+    });
+  };
+const trigger5 = new Date(ah);
+trigger5.setHours(0);
+trigger5.setMinutes(0);
+trigger5.setSeconds(0);
+  const ApplehhandleNotification = () => {
+    Notification.scheduleNotificationAsync({
+      content: {
+        title: "Weather",
+        body: "its time for you to harvest the apple trees",
+      },
+      trigger5,
+    });
+  };
 
   return (
     <View style={styles.con}>
@@ -66,9 +206,7 @@ export default function Click({ navigation, route }) {
         }}
       >
         <View>
-          <Text style={styles.TextDecor}>
-            Set Reminder
-          </Text>
+          <Text style={styles.TextDecor}>Set Reminder</Text>
         </View>
       </TouchableOpacity>
     </View>

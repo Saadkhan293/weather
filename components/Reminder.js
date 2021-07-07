@@ -1,8 +1,6 @@
 import React, { useState,useEffect} from "react";
 import { TextInput, Text, StyleSheet, View,Button,TouchableOpacity,Alert } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import moment from "moment";
-import axios from 'axios';
 import * as Notification from "expo-notifications";
 import * as Permission from "expo-permissions";
 
@@ -155,7 +153,7 @@ export default function Reminder() {
           onPress={()=> handleNotification()}
         >
             <Text style={{ textAlign: "center", fontWeight: "bold" }}>
-              SignUp
+                Set Reminder
             </Text>
         </TouchableOpacity>
         {/* <Button title="press me" onPress={() => handleNotification()}></Button> */}

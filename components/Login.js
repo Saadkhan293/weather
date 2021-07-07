@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Alert } from "react-native";
 import {
   StyleSheet,
@@ -9,11 +9,13 @@ import {
   navigation,
   ImageBackground,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome5";
 import { useState } from "react";
-export default function Employeelogin({ navigation }) {
+import Icon from "react-native-vector-icons/FontAwesome5";
+
+export default function Login({ navigation }) {
   const [username, setUserName] = useState("");
   const [password, setpassword] = useState("");
+ 
 
   const sendData = () => {
     if (username.length == 0 || password.length == 0) {
@@ -48,6 +50,7 @@ export default function Employeelogin({ navigation }) {
         });
     }
   };
+ 
 
   return (
     <View style={styles.container}>
